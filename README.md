@@ -1,4 +1,4 @@
-# Document.AI 주요 모델 트렌드 Report
+# 주요 모델 트렌드 Report Bot(Google Chat)
 
 [Google Chat 웹훅 발급 가이드](repo_src/imgs/get_google_web_hook/README.md)
 
