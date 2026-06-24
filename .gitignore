@@ -16,5 +16,10 @@ logs/
 # Runtime source snapshots (cloned on machine)
 source/*/
 
+# 예외(샘플로 커밋할 소스)
+!source/document-automation-workspace/
+!source/document-automation-workspace/**
+source/document-automation-workspace/**/.git
+
 # Optional local files
 *.log
