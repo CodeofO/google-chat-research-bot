@@ -1,0 +1,10 @@
+{
+  "Document Parse Model": {
+    "PaddleOCR": "https://github.com/PADDLEPADDLE/PADDLEOCR",
+    "MinerU": "https://github.com/opendatalab/mineru",
+    "HunyuanOCR": "https://github.com/Tencent-Hunyuan/HunyuanOCR"
+  },
+  "Benchmark": {
+    "OmniDocBench": "https://github.com/opendatalab/OmniDocBench"
+  }
+}

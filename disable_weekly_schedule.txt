@@ -1,0 +1,22 @@
+매주 월요일 09:00 자동 실행을 끄는 스크립트 텍스트
+
+현재 환경은 cron으로 등록된 상태일 가능성이 높으므로, 아래 순서대로 진행합니다.
+
+1) 현재 등록 확인
+crontab -l | grep DOCAI_TREND_RESEARCH_BOT_WEEKLY
+
+2) cron 등록 해제
+crontab -l | grep -v DOCAI_TREND_RESEARCH_BOT_WEEKLY | crontab -
+
+3) 해제 확인
+crontab -l | grep DOCAI_TREND_RESEARCH_BOT_WEEKLY || echo "해제됨"
+
+--------------------------------------------------
+macOS 환경인 경우(현재는 아님)이면 추가로:
+launchctl bootout gui/$(id -u) ~/Library/LaunchAgents/com.genai.docai.trendbot.plist
+launchctl remove com.genai.docai.trendbot
+rm -f ~/Library/LaunchAgents/com.genai.docai.trendbot.plist
+--------------------------------------------------
+
+해제 후 다시 설치하려면:
+bash /data/workspace/go.jung/SIDE_PJ/01_DOCAI_TREND/install_weekly_schedule.sh
