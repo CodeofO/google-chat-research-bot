@@ -10,6 +10,7 @@
 3. `Apps & integrations`(또는 `앱 및 통합`) 메뉴로 이동합니다.
 
 ![step1](/repo_src/imgs/get_google_web_hook/page1_1.png)
+![step1-b](/repo_src/imgs/get_google_web_hook/page2_1.png)
 
 ## 2) Webhook 추가
 
@@ -18,7 +19,7 @@
 3. 사용자를 식별할 이름 또는 설명을 입력(선택)
 4. `Save`를 눌러 저장
 
-![step2](/repo_src/imgs/get_google_web_hook/page2_1.png)
+![step2](/repo_src/imgs/get_google_web_hook/page3_1.png)
 
 ## 3) Webhook URL 복사
 
@@ -31,29 +32,29 @@
 GOOGLE_CHAT_WEBHOOK_URL=https://chat.googleapis.com/v1/spaces/AAAA....
 ```
 
-![step3](/repo_src/imgs/get_google_web_hook/page3_1.png)
+![step3](/repo_src/imgs/get_google_web_hook/page4_1.png)
 
-## 4) 발급 URL 전달 테스트
+## 4) 수신 테스트 및 권한 점검
 
-아래 요청으로 메시지가 오면 주소가 정상입니다.
+1. 채팅방에 테스트 메시지를 직접 전송해봅니다.
+2. 메시지가 오지 않으면 메시지 권한, 앱 통합 허용 범위, 스페이스 멤버십을 다시 확인합니다.
+
+![step4](/repo_src/imgs/get_google_web_hook/page5_1.png)
+
+## 5) 메시지 포맷 확인
+
+기본 텍스트 테스트와 실제 리포트 포맷으로 수신 유효성을 함께 확인합니다.
 
 ```bash
 curl -X POST "$GOOGLE_CHAT_WEBHOOK_URL" \
   -H 'Content-Type: application/json; charset=UTF-8' \
-  -d '{"text": "webhook test"}'
+  -d '{"text": "[테스트] Google Chat webhook 연결 확인"}'
 ```
 
-또는 직접 스크립트로는
+수신 확인이 끝나면 바로 `bash run_research.sh` 단일 실행으로 최종 리포트 전송 결과를 확인합니다.
 
-```bash
-bash run_research.sh
-```
-
-로컬에서 1회 실행 후 메시지 수신을 확인합니다.
-
-## 5) 주의사항
+## 6) 주의사항
 
 - Webhook URL은 민감정보이므로 `.env`에만 저장하고 커밋하지 않습니다.
 - 채팅 공간 권한이 바뀌면 URL이 무효가 될 수 있습니다.
 - Workspace 관리 정책에 따라 수신 메시지 정책이 제한될 수 있습니다.
-
